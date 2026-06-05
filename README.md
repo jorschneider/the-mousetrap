@@ -26,11 +26,12 @@ the actual rehearsal diaries.
 - `build.js` — compiles `sim/` into `data.js` (script parser, staging-anchor resolution, markdown rendering); run `node build.js`
 - `index.html` / `styles.css` / `app.js` — static site, no dependencies
 - `company.json` — the troupe's personas (the simulation's seed cast)
-- `audio/` — pre-rendered voice takes for the eight Moments (ElevenLabs `eleven_multilingual_v2`,
-  one premade voice cast per character with per-role expressiveness settings; R&G share a voice
-  on purpose). Regenerate with `node --env-file=<env with ELEVENLABS_API_KEY> gen-audio.js`
-  after changing moment anchors. Outside the Moments, the site falls back to the browser's
-  Web Speech API.
+- `audio/` — pre-rendered voice takes for the eight Moments (Hume Octave TTS). The pipeline
+  first *designs* one custom voice per character from a written casting description
+  (`mousetrap-hamlet`, `mousetrap-ghost`, …; R&G share one voice on purpose), then renders
+  every line with per-line acting instructions — asides automatically get hushed delivery.
+  Regenerate with `node --env-file=.env.local gen-audio.js` (needs `HUME_API_KEY`; resumable,
+  rate-limit aware). Outside the Moments, the site falls back to the browser's Web Speech API.
 
 ## Run locally
 
