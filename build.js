@@ -72,13 +72,18 @@ function normalizeSpeaker(s) {
   return s.replace(/[*_:.]/g, '').trim().toUpperCase();
 }
 function isSpeakerLine(line) {
-  const stripped = line.replace(/[*_:.]/g, '').trim();
+  let stripped = line.replace(/[*_:.]/g, '').trim();
+  if (!stripped || stripped.length > 60) return null;
+  // peel a trailing parenthetical delivery note: CLAUDIUS (aside), HAMLET (to Horatio)
+  let paren = null;
+  const pm = stripped.match(/^(.*?)\s*\((.+?)\)$/);
+  if (pm) { stripped = pm[1].trim(); paren = pm[2].trim(); }
   if (!stripped || stripped.length > 40) return null;
-  if (stripped !== stripped.toUpperCase()) return null; // must already be all-caps
+  if (stripped !== stripped.toUpperCase()) return null; // name must already be all-caps
   const t = stripped.toUpperCase();
   // known characters, or "PLAYER KING"-style caps lines of 1-4 words
-  if (KNOWN_CHARS.includes(t)) return t;
-  if (/^[A-Z][A-Z &.'\-]+$/.test(t) && t.split(/\s+/).length <= 4) return t;
+  if (KNOWN_CHARS.includes(t)) return { name: t, paren };
+  if (/^[A-Z][A-Z &.'\-]+$/.test(t) && t.split(/\s+/).length <= 4) return { name: t, paren };
   return null;
 }
 
@@ -131,7 +136,8 @@ function parseScript(md) {
     const speaker = isSpeakerLine(trimmed);
     if (speaker) {
       pushSpeech();
-      speech = { type: 'speech', char: speaker, lines: [] };
+      speech = { type: 'speech', char: speaker.name, lines: [] };
+      if (speaker.paren) speech.mode = speaker.paren; // (aside), (to Horatio), (behind)
       continue;
     }
     // dialogue line (or stray prose)
