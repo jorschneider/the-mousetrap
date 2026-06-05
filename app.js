@@ -291,6 +291,17 @@
   }
   if (docs.length) showDoc(0);
 
+  // "read it" links in the Short Version open the cited document in the diary
+  document.querySelectorAll('.doc-link[data-doc]').forEach(a => {
+    a.addEventListener('click', e => {
+      const i = docs.findIndex(d => d.id === a.dataset.doc);
+      if (i === -1) return; // fall through to plain #diary anchor
+      e.preventDefault();
+      showDoc(i);
+      document.getElementById('diary').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
   /* ---------------------------------------------------------- company */
   const actorRoles = {};
   (D.cast || []).forEach(c => {
@@ -327,7 +338,7 @@
   }
 
   /* ---------------------------------------------------------- nav highlight */
-  const sections = ['performance', 'diary', 'company', 'review'];
+  const sections = ['shortversion', 'performance', 'diary', 'company', 'review'];
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
