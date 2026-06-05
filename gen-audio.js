@@ -1,14 +1,15 @@
 #!/usr/bin/env node
-// gen-audio.js — pre-renders TTS audio for the eight Moments via OpenAI gpt-4o-mini-tts.
-// Each character is voice-cast and given delivery direction. Output: audio/*.mp3 + audio/manifest.json
-// Run: node --env-file=<path-to-env-with-OPENAI_API_KEY> gen-audio.js
+// gen-audio.js — pre-renders TTS audio for the eight Moments via ElevenLabs (eleven_multilingual_v2).
+// Each character is cast to a premade voice with per-role expressiveness settings.
+// Output: audio/*.mp3 + audio/manifest.json
+// Run: node --env-file=<path-to-env-with-ELEVENLABS_API_KEY> gen-audio.js
 // Anchors below must match MOMENTS in app.js — regenerate after changing them.
 
 const fs = require('fs');
 const path = require('path');
 
-const KEY = process.env.OPENAI_API_KEY;
-if (!KEY) { console.error('OPENAI_API_KEY not set. Run: node --env-file=<env file> gen-audio.js'); process.exit(1); }
+const KEY = process.env.ELEVENLABS_API_KEY;
+if (!KEY) { console.error('ELEVENLABS_API_KEY not set. Run: node --env-file=<env file> gen-audio.js'); process.exit(1); }
 
 const OUT = path.join(__dirname, 'audio');
 fs.mkdirSync(OUT, { recursive: true });
@@ -71,30 +72,29 @@ MOMENTS.forEach(m => {
   m.end = end;
 });
 
-// ---- the voice casting ----
+// ---- the voice casting (ElevenLabs premade voices; IDs are universal) ----
+// voice_settings: lower stability = more volatile; style = expressiveness boost
 const CAST = {
-  HAMLET:       { voice: 'ballad',  instructions: 'A young stage actor playing Hamlet: quick, rough-edged, intelligent; real doubt running under a performance of resolve. Shakespearean verse, theatrical but never hammy.' },
-  CLAUDIUS:     { voice: 'onyx',    instructions: 'A king whose warmth is the instrument: smooth, kind-sounding, politically polished; guilt sealed beneath an unfailingly pleasant surface. Shakespearean verse.' },
-  GERTRUDE:     { voice: 'sage',    instructions: 'A queen: composed, adult, dry grief; precise and dignified, never weepy. Shakespearean verse.' },
-  OPHELIA:      { voice: 'shimmer', instructions: 'A young woman holding herself together: clear, light, tightly controlled; grief held, not performed. Shakespearean verse.' },
-  POLONIUS:     { voice: 'ash',     instructions: 'An old court counsellor and surveillance man: flat, deliberate, deadpan; an operator stating conclusions. Shakespearean verse.' },
-  HORATIO:      { voice: 'echo',    instructions: 'The loyal friend: calm, still, quietly warm; restraint that is itself affection. At grief, one controlled crack. Shakespearean verse.' },
-  GHOST:        { voice: 'fable',   instructions: 'The ghost of a dead king racing the dawn: slow, hushed, urgent; a low whisper with iron in it; efficient, never maudlin. Shakespearean verse.' },
-  ROSENCRANTZ:  { voice: 'verse',   instructions: 'An eager, mild courtier glad to be of use; pleasant, brisk, slightly too smooth. One actor plays both Rosencrantz and Guildenstern in an identical voice — no differentiation.' },
-  GUILDENSTERN: { voice: 'verse',   instructions: 'An eager, mild courtier glad to be of use; pleasant, brisk, slightly too smooth. One actor plays both Rosencrantz and Guildenstern in an identical voice — no differentiation.' },
-  ALL:          { voice: 'alloy',   instructions: 'Courtiers crying out in alarm, urgent and overlapping.' },
+  HAMLET:       { voice: 'N2lVS1w4EtoT3dr4eOWO', name: 'Callum',  settings: { stability: 0.35, similarity_boost: 0.8, style: 0.6,  use_speaker_boost: true } }, // intense, rough-edged
+  CLAUDIUS:     { voice: 'JBFqnCBsd6RMkjVDRZzb', name: 'George',  settings: { stability: 0.6,  similarity_boost: 0.8, style: 0.35, use_speaker_boost: true } }, // warm, smooth, political
+  GERTRUDE:     { voice: 'XrExE9yKIg1WjnnlVkGX', name: 'Matilda', settings: { stability: 0.55, similarity_boost: 0.8, style: 0.4,  use_speaker_boost: true } }, // composed, adult
+  OPHELIA:      { voice: 'pFZP5JQG7iQjIQuC4Bku', name: 'Lily',    settings: { stability: 0.45, similarity_boost: 0.8, style: 0.45, use_speaker_boost: true } }, // light, held-together
+  POLONIUS:     { voice: 'onwK4e9ZLuTAKqWW03F9', name: 'Daniel',  settings: { stability: 0.7,  similarity_boost: 0.8, style: 0.2,  use_speaker_boost: true } }, // flat operator
+  HORATIO:      { voice: 'TX3LPaxmHKxFdv7VOQHJ', name: 'Liam',    settings: { stability: 0.65, similarity_boost: 0.8, style: 0.3,  use_speaker_boost: true } }, // still, warm
+  GHOST:        { voice: 'nPczCjzI2devNBz1zQrb', name: 'Brian',   settings: { stability: 0.3,  similarity_boost: 0.8, style: 0.8,  use_speaker_boost: true } }, // deep, maximal drama
+  ROSENCRANTZ:  { voice: 'IKne3meq5aSn9XLyUdCD', name: 'Charlie', settings: { stability: 0.6,  similarity_boost: 0.8, style: 0.4,  use_speaker_boost: true } }, // pleasant, too smooth —
+  GUILDENSTERN: { voice: 'IKne3meq5aSn9XLyUdCD', name: 'Charlie', settings: { stability: 0.6,  similarity_boost: 0.8, style: 0.4,  use_speaker_boost: true } }, // — same actor, no seam
+  ALL:          { voice: 'nPczCjzI2devNBz1zQrb', name: 'Brian',   settings: { stability: 0.3,  similarity_boost: 0.7, style: 0.7,  use_speaker_boost: true } },
 };
 
 async function tts(text, cast, file) {
-  const res = await fetch('https://api.openai.com/v1/audio/speech', {
+  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${cast.voice}?output_format=mp3_44100_128`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' },
+    headers: { 'xi-api-key': KEY, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gpt-4o-mini-tts',
-      voice: cast.voice,
-      input: text,
-      instructions: cast.instructions,
-      response_format: 'mp3',
+      text,
+      model_id: 'eleven_multilingual_v2',
+      voice_settings: cast.settings,
     }),
   });
   if (!res.ok) throw new Error(`TTS ${res.status}: ${(await res.text()).slice(0, 200)}`);
