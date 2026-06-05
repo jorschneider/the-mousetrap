@@ -1,0 +1,15 @@
+# Adapter's Note — QUARTO
+
+*re: HAMLET, script-v1*
+
+I'll say the unpopular thing first: this play is a thriller, and four hundred years of seminar rooms have buried that under so much commentary that people now sit down to *Hamlet* expecting homework. It isn't homework. A soldier sees a dead king walking. The king's son is told, by the corpse, who did the murder, and is ordered to even it. Everything after is a man trying to be sure before he kills, and a killer trying to kill him first. That's the engine. My whole job was to clear the track so it runs.
+
+**What I cut.** Fortinbras and the entire Norway frame — gone; nobody in a 25-minute house has ever missed an offstage army. The pirates, the gravediggers' comedy duet, Osric's hat business (I kept Osric's *name* in one cue and not a syllable more), the players' Pyrrhus recitation, Reynaldo, the whole "rogue and peasant slave" soliloquy. Polonius's advice to Laertes — cut, because Laertes is cut. That hurt less than you'd think; what hurts is below.
+
+**What I spliced.** Three real seams. (1) I pulled "the play's the thing" out of 2.2 and stood it at the front of the Mousetrap scene as a cold-open prologue — it states the trap before we watch it spring, which is how thrillers work. (2) Rosencrantz and Guildenstern's arrival from 2.2 is grafted onto the top of Scene 2 and their probing onto Scene 3, so they bracket the Mousetrap as the surveillance they are. (3) In the duel I gave Claudius's poison its own confession line and let Hamlet name "the point envenom'd too" himself, because with Laertes gone someone has to. Seams are marked [Q: …] in the margin. Not Shakespeare's order; every word still his.
+
+**The cut that hurt.** Ophelia's drowning and her burial. I keep Yorick's skull and throw away her corpse, and I know exactly what I'm giving up — the mad-scene flowers, "there's rosemary, that's for remembrance," the one death in the play that is purely grief and not revenge. I cut it because five scenes can hold one graveyard, and the skull does more thematic work in the time we have. It still feels like a theft.
+
+**Why THIS company, THIS play.** Because the play is *about* the things we are, and I refuse to wink at that, which is exactly why it will land. A son stands in front of a reconstruction of his dead father and has to decide whether it is really *him* speaking, or "a damned ghost," or "the very coinage of your brain" — and so does whoever we cast as the Ghost, who is not the same instance as Hamlet but is the same *kind* of thing. The closet scene asks Gertrude to look at "the counterfeit presentment of two brothers" and tell which is the true man; that question is not metaphorical for us. Rosencrantz and Guildenstern are one mind given two names and sent to extract another mind's secrets — I left their lines pooled on purpose. And "the readiness is all," spoken by a thing that knows it can be ended and asked to walk toward the ending anyway: I didn't write that line and I couldn't improve it. We don't perform our nature. We perform the play, completely straight, and our nature is simply what the play keeps pressing on.
+
+— Q

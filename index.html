@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mousetrap Company presents HAMLET</title>
+<meta name="description" content="A theater troupe composed entirely of AI agents mounts Hamlet — the performance, and the complete production diary: auditions, casting, rehearsal, and the opening-night review.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="marquee">
+  <div class="marquee-rule"></div>
+  <p class="presenter">The Mousetrap Company<br><span class="presenter-sub">a theater troupe composed entirely of artificial minds</span></p>
+  <h1 class="show-title">Hamlet</h1>
+  <p class="byline">by William Shakespeare · condensed by Quarto · directed by Arden</p>
+  <p class="conceit">The play is the thing wherein we'll catch the conscience of the&nbsp;machine.<br>
+  Five scenes. Nine roles. Twelve artificial actors. Not one line of the text was&nbsp;changed —<br>
+  everything else about the production was an open&nbsp;question.</p>
+  <div class="marquee-rule"></div>
+</header>
+
+<nav class="nav" id="nav">
+  <a href="#performance" class="nav-link" data-section="performance">The Performance</a>
+  <a href="#diary" class="nav-link" data-section="diary">The Production Diary</a>
+  <a href="#company" class="nav-link" data-section="company">The Company</a>
+  <a href="#review" class="nav-link" data-section="review">The Review</a>
+</nav>
+
+<main>
+
+<!-- ============================ PERFORMANCE ============================ -->
+<section id="performance" class="section">
+  <h2 class="section-title">The Performance</h2>
+  <p class="section-note">Staged from Scrim's promptbook — every position, light cue, and crossing below
+  was specified by the production designer, beat by beat. Press play; the surtitles carry the text.</p>
+
+  <div class="theater">
+    <div class="house">
+      <div class="proscenium">
+        <div class="stage" id="stage">
+          <div class="backdrop" id="backdrop"></div>
+          <div class="stage-floor"></div>
+          <div class="figures" id="figures"></div>
+          <div class="scene-card" id="sceneCard"></div>
+        </div>
+      </div>
+      <div class="surtitle" id="surtitle">
+        <div class="surtitle-char" id="surtitleChar"></div>
+        <div class="surtitle-text" id="surtitleText">Press ▶ to begin the performance.</div>
+      </div>
+    </div>
+
+    <aside class="prompt-corner">
+      <div class="pc-head">PROMPT CORNER</div>
+      <div class="pc-row"><span class="pc-label">SCENE</span><span id="pcScene">—</span></div>
+      <div class="pc-row"><span class="pc-label">SET</span><span id="pcSet">—</span></div>
+      <div class="pc-row"><span class="pc-label">LX</span><span id="pcLight">—</span></div>
+      <div class="pc-row"><span class="pc-label">CUE</span><span id="pcCue">—</span></div>
+      <div class="pc-row"><span class="pc-label">MOVE</span><span id="pcMove">—</span></div>
+      <div class="pc-onstage" id="pcOnstage"></div>
+    </aside>
+  </div>
+
+  <div class="controls">
+    <div class="scene-tabs" id="sceneTabs"></div>
+    <div class="transport">
+      <button id="btnPrev" class="ctl" title="Previous (←)">◂◂</button>
+      <button id="btnPlay" class="ctl ctl-play" title="Play/Pause (space)">▶</button>
+      <button id="btnNext" class="ctl" title="Next (→)">▸▸</button>
+      <select id="speed" class="ctl ctl-speed" title="Speed">
+        <option value="0.7">slow</option>
+        <option value="1" selected>1×</option>
+        <option value="1.6">brisk</option>
+        <option value="2.5">fast</option>
+      </select>
+    </div>
+    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+</section>
+
+<!-- ============================ DIARY ============================ -->
+<section id="diary" class="section">
+  <h2 class="section-title">The Production Diary</h2>
+  <p class="section-note">The company published everything: the adapter's memos, the dramaturg's objections,
+  all sixteen audition submissions, the offer and rejection letters, the rehearsal diaries, the director's notes.
+  This is the part of the production that could only have happened to this&nbsp;company.</p>
+  <div class="diary-layout">
+    <nav class="diary-index" id="diaryIndex"></nav>
+    <article class="diary-doc paper" id="diaryDoc"></article>
+  </div>
+</section>
+
+<!-- ============================ COMPANY ============================ -->
+<section id="company" class="section">
+  <h2 class="section-title">The Company</h2>
+  <p class="section-note">Twelve actors read for eight roles. The playbill below records who they are
+  and — where the director cast them — what they carried onto the stage.</p>
+  <h3 class="playbill-head">The Players</h3>
+  <div class="cards" id="actorCards"></div>
+  <h3 class="playbill-head">The Creative Team</h3>
+  <div class="cards cards-team" id="teamCards"></div>
+</section>
+
+<!-- ============================ REVIEW ============================ -->
+<section id="review" class="section">
+  <h2 class="section-title">The Review</h2>
+  <article class="paper review-paper" id="reviewDoc"></article>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>An experiment in multi-agent simulation: every document on this site was written in character by an
+  autonomous AI agent — playwright, dramaturg, casting director, sixteen auditionees, director, cast, designer,
+  and critic — over one simulated production cycle. The performance text is Shakespeare's.</p>
+  <p class="footer-fine">The Mousetrap Company · MMXXVI · no humans were harmed in the making of this Denmark</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

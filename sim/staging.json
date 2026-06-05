@@ -1,0 +1,773 @@
+{
+  "stage": { "grid": { "cols": 12, "rows": 7 }, "note": "col 0 = stage left, row 0 = upstage" },
+  "characters": [
+    { "id": "HAMLET", "actor": "The Understudy", "color": "#1c2b3a", "silhouette": "lean figure in unrelieved black, head slightly forward as if listening" },
+    { "id": "CLAUDIUS", "actor": "Sterling Mask", "color": "#7a1f2b", "silhouette": "broad, upright, deep-red robe; the only one who never hurries" },
+    { "id": "GERTRUDE", "actor": "Vesper Nine", "color": "#9a6f8e", "silhouette": "pale gown, chin high, hands held very still" },
+    { "id": "OPHELIA", "actor": "Echo Lyric", "color": "#cdbf8a", "silhouette": "small, pale-gold dress, a book or bundle clasped at the chest" },
+    { "id": "POLONIUS", "actor": "Old Repertory", "color": "#5a5340", "silhouette": "stooped grey-green, ear cocked, a man shaped by leaning toward keyholes" },
+    { "id": "HORATIO", "actor": "Nova Cadence", "color": "#3d6b66", "silhouette": "muted teal traveller's coat, weight even on both feet, watchful and quiet" },
+    { "id": "GHOST", "actor": "Dame Calliope", "color": "#b9c4cc", "silhouette": "near-translucent steel, edges that don't quite resolve, lit from within" },
+    { "id": "RG", "actor": "Patch 2.3.1", "color": "#8a7a4a", "silhouette": "one figure in matched livery; two names spoken by a single body, never turning its head between them" }
+  ],
+  "scenes": [
+    {
+      "id": 1,
+      "title": "THE BATTLEMENTS",
+      "set": "The bare platform reads as a castle rampart: the upstage wall is a low parapet, a single cold gap of open sky beyond it.",
+      "palette": ["#0b1622", "#1c2b3a", "#b9c4cc"],
+      "lighting": "moonlight only, hard and blue, one shaft of pale light marking the threshold the Ghost will lead him across",
+      "beats": [
+        {
+          "id": "1.1",
+          "anchor": "These indeed seem, for they are",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 7, "row": 4, "facing": "left" }
+          },
+          "movement": "Hamlet and Horatio stand close at center, two figures alone against the cold sky; neither moves.",
+          "cue": "lights up cold and low; faint wind under the dialogue"
+        },
+        {
+          "id": "1.2",
+          "anchor": "Look, my lord, it comes!",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 7, "row": 4, "facing": "up" },
+            "GHOST": { "col": 5, "row": 0, "facing": "down" }
+          },
+          "movement": "The Ghost enters at the upstage parapet, armed; Horatio turns up to it; Hamlet turns to face it.",
+          "cue": "wind drops to dead silence; the within-lit glow of the Ghost fades up at the parapet"
+        },
+        {
+          "id": "1.3",
+          "anchor": "Angels and ministers of grace",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 3, "facing": "up" },
+            "HORATIO": { "col": 7, "row": 4, "facing": "up" },
+            "GHOST": { "col": 5, "row": 0, "facing": "down" }
+          },
+          "movement": "Hamlet takes one step upstage toward the Ghost and holds; he does not close the gap.",
+          "cue": null
+        },
+        {
+          "id": "1.4",
+          "anchor": "It beckons you to go away",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 3, "facing": "up" },
+            "HORATIO": { "col": 6, "row": 4, "facing": "up" },
+            "GHOST": { "col": 4, "row": 0, "facing": "left" }
+          },
+          "movement": "The Ghost beckons and drifts a step toward stage left; Horatio moves in toward Hamlet to hold him.",
+          "cue": null
+        },
+        {
+          "id": "1.5",
+          "anchor": "My fate cries out,",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 3, "facing": "down" },
+            "HORATIO": { "col": 6, "row": 4, "facing": "right" },
+            "GHOST": { "col": 3, "row": 1, "facing": "left" }
+          },
+          "movement": "Hamlet wrenches free, turning briefly back on Horatio who fails physically to keep him off the ledge.",
+          "cue": null
+        },
+        {
+          "id": "1.6",
+          "anchor": "Whither wilt thou lead me?",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 2, "facing": "up" },
+            "GHOST": { "col": 3, "row": 1, "facing": "down" }
+          },
+          "movement": "Horatio withdraws into the dark stage right; Hamlet crosses the lit threshold toward the Ghost, the two now alone.",
+          "cue": "Horatio's exit; the pale threshold shaft brightens as Hamlet steps through it; everything else dims to near-black"
+        },
+        {
+          "id": "1.7",
+          "anchor": "Mark me.",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 2, "facing": "up" },
+            "GHOST": { "col": 3, "row": 1, "facing": "down" }
+          },
+          "movement": "Neither moves; Hamlet stands a single pace below and apart from the Ghost, studying whether it is him.",
+          "cue": null
+        },
+        {
+          "id": "1.8",
+          "anchor": "I am thy father's spirit,",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 3, "facing": "up" },
+            "GHOST": { "col": 3, "row": 1, "facing": "down" }
+          },
+          "movement": "Hamlet sinks half a step lower toward the Ghost, held; the Ghost stays exactly where it is.",
+          "cue": null
+        },
+        {
+          "id": "1.9",
+          "anchor": "Now, Hamlet, hear.",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 3, "facing": "up" },
+            "GHOST": { "col": 4, "row": 1, "facing": "down" }
+          },
+          "movement": "The Ghost drifts a half-step toward Hamlet for the account of the murder, the closest the two ever come.",
+          "cue": "the glow of the Ghost begins, very slowly, to pale"
+        },
+        {
+          "id": "1.10",
+          "anchor": "O all you host of heaven!",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 3, "facing": "up" }
+          },
+          "movement": "The Ghost vanishes upstage; Hamlet is left alone at the threshold, facing the empty place it stood.",
+          "cue": "the Ghost's exit; its glow snuffs out; cold moonlight returns to the whole platform"
+        },
+        {
+          "id": "1.11",
+          "anchor": "What news, my lord?",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 3, "facing": "right" },
+            "HORATIO": { "col": 7, "row": 4, "facing": "left" }
+          },
+          "movement": "Horatio returns from the dark stage right; Hamlet turns down and crosses toward him to center.",
+          "cue": "Horatio's re-entrance"
+        },
+        {
+          "id": "1.12",
+          "anchor": "The time is out of joint.",
+          "onstage": {
+            "HAMLET": { "col": 6, "row": 4, "facing": "left" },
+            "HORATIO": { "col": 7, "row": 4, "facing": "right" }
+          },
+          "movement": "Hamlet and Horatio join at center and exit together stage left.",
+          "cue": "exeunt; wind rises again as the platform goes dark"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "\"TO BE OR NOT TO BE\" / THE NUNNERY",
+      "set": "The same platform, reframed as a castle lobby: the upstage parapet now reads as an interior gallery rail behind which the King and Polonius can hide.",
+      "palette": ["#2a2438", "#9a6f8e", "#cdbf8a"],
+      "lighting": "warm interior wash, but a hard cold pool isolates Hamlet for the soliloquy; the hiding-place upstage stays half-lit so we always see the watchers",
+      "beats": [
+        {
+          "id": "2.1",
+          "anchor": "Welcome, dear Rosencrantz and Guildenstern!",
+          "onstage": {
+            "CLAUDIUS": { "col": 6, "row": 2, "facing": "down" },
+            "RG": { "col": 6, "row": 4, "facing": "up" },
+            "POLONIUS": { "col": 9, "row": 2, "facing": "left" },
+            "OPHELIA": { "col": 10, "row": 3, "facing": "left" }
+          },
+          "movement": "Claudius receives the single RG figure at center; Polonius and Ophelia wait apart, upstage right.",
+          "cue": "lights up warm; a low formal court chord"
+        },
+        {
+          "id": "2.2",
+          "anchor": "Both your majesties",
+          "onstage": {
+            "CLAUDIUS": { "col": 6, "row": 2, "facing": "down" },
+            "RG": { "col": 6, "row": 4, "facing": "up" },
+            "POLONIUS": { "col": 9, "row": 2, "facing": "left" },
+            "OPHELIA": { "col": 10, "row": 3, "facing": "left" }
+          },
+          "movement": "The one RG figure speaks both names in one breath without turning its head, then bows on 'To be commanded.'",
+          "cue": null
+        },
+        {
+          "id": "2.3",
+          "anchor": "Ophelia, walk you here.",
+          "onstage": {
+            "CLAUDIUS": { "col": 6, "row": 2, "facing": "right" },
+            "POLONIUS": { "col": 7, "row": 3, "facing": "right" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" }
+          },
+          "movement": "RG withdraws stage left; Polonius crosses to place Ophelia downstage with her book, positioning her like a prop.",
+          "cue": "RG's exit"
+        },
+        {
+          "id": "2.4",
+          "anchor": "I hear him coming. Withdraw.",
+          "onstage": {
+            "CLAUDIUS": { "col": 6, "row": 1, "facing": "down" },
+            "POLONIUS": { "col": 7, "row": 1, "facing": "down" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" }
+          },
+          "movement": "Claudius and Polonius retreat behind the upstage gallery rail to hide; Ophelia stays planted downstage.",
+          "cue": "the hiding-place light dims to a watching half-glow but never goes fully dark"
+        },
+        {
+          "id": "2.5",
+          "anchor": "To be, or not to be:",
+          "onstage": {
+            "CLAUDIUS": { "col": 6, "row": 1, "facing": "down" },
+            "POLONIUS": { "col": 7, "row": 1, "facing": "down" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" },
+            "HAMLET": { "col": 3, "row": 4, "facing": "down" }
+          },
+          "movement": "Hamlet enters stage left into a cold isolating pool, not seeing Ophelia; he plays the soliloquy front, to no one.",
+          "cue": "Hamlet's entrance; warm wash drops out around him to leave a single hard cold pool"
+        },
+        {
+          "id": "2.6",
+          "anchor": "Soft you now!",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" },
+            "CLAUDIUS": { "col": 6, "row": 1, "facing": "down" },
+            "POLONIUS": { "col": 7, "row": 1, "facing": "down" }
+          },
+          "movement": "Hamlet sees Ophelia and crosses toward her along the downstage line; the cold pool widens to take them both.",
+          "cue": "the cold pool expands to include Ophelia"
+        },
+        {
+          "id": "2.7",
+          "anchor": "My lord, I have remembrances",
+          "onstage": {
+            "HAMLET": { "col": 7, "row": 4, "facing": "right" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" },
+            "CLAUDIUS": { "col": 6, "row": 1, "facing": "down" },
+            "POLONIUS": { "col": 7, "row": 1, "facing": "down" }
+          },
+          "movement": "Ophelia steps in and holds out the bundle of remembrances to give them back; Hamlet stops just short of taking them.",
+          "cue": null
+        },
+        {
+          "id": "2.8",
+          "anchor": "Get thee to a nunnery:",
+          "onstage": {
+            "HAMLET": { "col": 8, "row": 4, "facing": "right" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" },
+            "CLAUDIUS": { "col": 6, "row": 1, "facing": "down" },
+            "POLONIUS": { "col": 7, "row": 1, "facing": "down" }
+          },
+          "movement": "Hamlet closes on Ophelia, hard and close; she holds her ground rather than recoil, the act of will kicked off its hinges.",
+          "cue": null
+        },
+        {
+          "id": "2.9",
+          "anchor": "I have heard of your paintings",
+          "onstage": {
+            "HAMLET": { "col": 6, "row": 5, "facing": "left" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" },
+            "CLAUDIUS": { "col": 6, "row": 1, "facing": "down" },
+            "POLONIUS": { "col": 7, "row": 1, "facing": "down" }
+          },
+          "movement": "Hamlet breaks downstage and away from Ophelia, throwing the last of it back over his shoulder.",
+          "cue": null
+        },
+        {
+          "id": "2.10",
+          "anchor": "O, what a noble mind",
+          "onstage": {
+            "OPHELIA": { "col": 7, "row": 4, "facing": "down" },
+            "CLAUDIUS": { "col": 6, "row": 1, "facing": "down" },
+            "POLONIUS": { "col": 7, "row": 1, "facing": "down" }
+          },
+          "movement": "Hamlet exits stage left; Ophelia drifts to center alone and takes the inventory of the wreck, front, dry-eyed.",
+          "cue": "Hamlet's exit; the cold pool contracts to Ophelia alone, the watchers still dimly visible above her"
+        },
+        {
+          "id": "2.11",
+          "anchor": "Love! his affections do not",
+          "onstage": {
+            "CLAUDIUS": { "col": 5, "row": 3, "facing": "right" },
+            "POLONIUS": { "col": 7, "row": 3, "facing": "left" },
+            "OPHELIA": { "col": 9, "row": 4, "facing": "left" }
+          },
+          "movement": "Claudius and Polonius come forward from the gallery to center; Ophelia stands set aside, unconsulted.",
+          "cue": "warm watching light comes back up over the two men"
+        },
+        {
+          "id": "2.12",
+          "anchor": "He shall with speed to England.",
+          "onstage": {
+            "CLAUDIUS": { "col": 5, "row": 3, "facing": "left" },
+            "POLONIUS": { "col": 6, "row": 3, "facing": "left" }
+          },
+          "movement": "Ophelia exits stage right; Claudius and Polonius turn and exit stage left, the decision already made over her.",
+          "cue": "exeunt; blackout"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "THE MOUSETRAP",
+      "set": "The same platform as a great hall; two facing thrones angled downstage-right for the King and Queen, a cleared playing square downstage-left where the dumb-show happens.",
+      "palette": ["#241c2e", "#7a1f2b", "#c8a24a"],
+      "lighting": "candle-gold court light, but the key light is rigged to favor Claudius's face; when the dumb-show plays, the audience's eyes are pulled to the King, not the players",
+      "beats": [
+        {
+          "id": "3.1",
+          "anchor": "I have heard",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 4, "facing": "down" }
+          },
+          "movement": "Hamlet alone at center-left, setting his trap to the house; the playing square and empty thrones wait in low light around him.",
+          "cue": "lights up to a single warm pool on Hamlet; thrones and playing square held dim"
+        },
+        {
+          "id": "3.2",
+          "anchor": "How fares our cousin Hamlet?",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 5, "facing": "right" },
+            "CLAUDIUS": { "col": 9, "row": 2, "facing": "left" },
+            "GERTRUDE": { "col": 10, "row": 3, "facing": "left" },
+            "POLONIUS": { "col": 8, "row": 1, "facing": "down" },
+            "OPHELIA": { "col": 6, "row": 5, "facing": "right" },
+            "HORATIO": { "col": 3, "row": 3, "facing": "right" },
+            "RG": { "col": 8, "row": 4, "facing": "up" }
+          },
+          "movement": "Trumpets; the full court enters and settles — Claudius and Gertrude to the thrones upstage right, Ophelia downstage, Horatio holding the stage-left edge, RG at center, Polonius by the King.",
+          "cue": "trumpet flourish; full candle-gold court wash, brightest on the King"
+        },
+        {
+          "id": "3.3",
+          "anchor": "Give me that man",
+          "onstage": {
+            "HAMLET": { "col": 3, "row": 4, "facing": "left" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" },
+            "CLAUDIUS": { "col": 9, "row": 2, "facing": "left" },
+            "GERTRUDE": { "col": 10, "row": 3, "facing": "left" },
+            "OPHELIA": { "col": 6, "row": 5, "facing": "right" },
+            "POLONIUS": { "col": 8, "row": 1, "facing": "down" },
+            "RG": { "col": 8, "row": 4, "facing": "up" }
+          },
+          "movement": "Hamlet crosses to Horatio at the stage-left edge and sets the watch on Claudius's face, aside.",
+          "cue": null
+        },
+        {
+          "id": "3.4",
+          "anchor": "Lady, shall I lie in your lap?",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 5, "facing": "right" },
+            "OPHELIA": { "col": 6, "row": 5, "facing": "left" },
+            "CLAUDIUS": { "col": 9, "row": 2, "facing": "left" },
+            "GERTRUDE": { "col": 10, "row": 3, "facing": "left" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" },
+            "POLONIUS": { "col": 8, "row": 1, "facing": "down" },
+            "RG": { "col": 8, "row": 4, "facing": "up" }
+          },
+          "movement": "Hamlet crosses to Ophelia and reclines at her feet downstage, deliberately placing himself with a sightline straight up to the King.",
+          "cue": null
+        },
+        {
+          "id": "3.5",
+          "anchor": "This is one Lucianus,",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 5, "facing": "right" },
+            "OPHELIA": { "col": 6, "row": 5, "facing": "left" },
+            "CLAUDIUS": { "col": 9, "row": 2, "facing": "left" },
+            "GERTRUDE": { "col": 10, "row": 3, "facing": "left" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" },
+            "POLONIUS": { "col": 8, "row": 1, "facing": "down" },
+            "RG": { "col": 8, "row": 4, "facing": "up" }
+          },
+          "movement": "The dumb-show plays in the cleared square downstage-left while Hamlet narrates; no figure crosses the King's sightline.",
+          "cue": "a thin spill of light on the playing square, but the key light tightens on Claudius's face so the house watches him watch"
+        },
+        {
+          "id": "3.6",
+          "anchor": "The king rises.",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 5, "facing": "up" },
+            "OPHELIA": { "col": 6, "row": 5, "facing": "up" },
+            "CLAUDIUS": { "col": 9, "row": 1, "facing": "down" },
+            "GERTRUDE": { "col": 10, "row": 3, "facing": "up" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" },
+            "POLONIUS": { "col": 8, "row": 1, "facing": "left" },
+            "RG": { "col": 8, "row": 4, "facing": "up" }
+          },
+          "movement": "Claudius stands sharply at his throne; every face on stage snaps up to him as the trap closes.",
+          "cue": "the dumb-show light cuts out; a hard isolating light slams onto Claudius alone"
+        },
+        {
+          "id": "3.7",
+          "anchor": "Give me some light. Away!",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 5, "facing": "up" },
+            "OPHELIA": { "col": 6, "row": 5, "facing": "up" },
+            "CLAUDIUS": { "col": 9, "row": 2, "facing": "left" },
+            "GERTRUDE": { "col": 10, "row": 3, "facing": "up" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" },
+            "POLONIUS": { "col": 8, "row": 1, "facing": "left" },
+            "RG": { "col": 8, "row": 4, "facing": "up" }
+          },
+          "movement": "Claudius breaks from the throne toward the upstage exit; the court rises in alarm behind him on 'Lights, lights, lights!'",
+          "cue": "house light on the court flares chaotically up and out"
+        },
+        {
+          "id": "3.8",
+          "anchor": "O good Horatio,",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 5, "facing": "left" },
+            "HORATIO": { "col": 3, "row": 4, "facing": "right" }
+          },
+          "movement": "All but Hamlet and Horatio rush out the upstage exit; Hamlet springs up and crosses to Horatio, the two alone and lit.",
+          "cue": "mass exit; lights collapse to a tight two-shot on Hamlet and Horatio at stage left"
+        },
+        {
+          "id": "3.9",
+          "anchor": "Good my lord, the king—",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 3, "row": 4, "facing": "right" },
+            "RG": { "col": 8, "row": 4, "facing": "left" }
+          },
+          "movement": "The single RG figure returns from the upstage exit and approaches; Hamlet turns to face it.",
+          "cue": "RG's re-entrance; the two-shot opens to take in the returning figure"
+        },
+        {
+          "id": "3.10",
+          "anchor": "O, the recorders!",
+          "onstage": {
+            "HAMLET": { "col": 6, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 3, "row": 4, "facing": "right" },
+            "RG": { "col": 8, "row": 4, "facing": "left" }
+          },
+          "movement": "Hamlet takes up a recorder and holds it out to RG as a real object before it becomes the metaphor.",
+          "cue": null
+        },
+        {
+          "id": "3.11",
+          "anchor": "Why, look you now,",
+          "onstage": {
+            "HAMLET": { "col": 7, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 3, "row": 4, "facing": "right" },
+            "RG": { "col": 8, "row": 4, "facing": "left" }
+          },
+          "movement": "Hamlet presses in on the RG figure with the pipe, naming it as a what and not a who.",
+          "cue": null
+        },
+        {
+          "id": "3.12",
+          "anchor": "'Tis now the very witching",
+          "onstage": {
+            "HAMLET": { "col": 6, "row": 4, "facing": "down" }
+          },
+          "movement": "RG withdraws upstage; Horatio slips off stage left; Hamlet turns alone to the house for the witching-time resolve, then exits stage left.",
+          "cue": "RG and Horatio exit; light narrows to a cold single pool on Hamlet, then blackout on his exit"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "THE CLOSET",
+      "set": "The same platform as the Queen's private closet: the upstage parapet now hung with an arras (a heavy curtain) for Polonius to hide behind; two framed pictures implied downstage.",
+      "palette": ["#2b2230", "#9a6f8e", "#b9c4cc"],
+      "lighting": "intimate low lamplight, warm and close; the Ghost's entrance brings back the cold within-lit blue from Scene One",
+      "beats": [
+        {
+          "id": "4.1",
+          "anchor": "He will come straight.",
+          "onstage": {
+            "GERTRUDE": { "col": 7, "row": 4, "facing": "left" },
+            "POLONIUS": { "col": 5, "row": 1, "facing": "down" }
+          },
+          "movement": "Polonius coaches Gertrude, then steps behind the arras at the upstage wall to listen.",
+          "cue": "lights up warm and low; Polonius's silhouette just readable behind the arras"
+        },
+        {
+          "id": "4.2",
+          "anchor": "Hamlet, thou hast thy father",
+          "onstage": {
+            "GERTRUDE": { "col": 7, "row": 4, "facing": "left" },
+            "POLONIUS": { "col": 5, "row": 1, "facing": "down" },
+            "HAMLET": { "col": 3, "row": 4, "facing": "right" }
+          },
+          "movement": "Hamlet enters stage left and crosses to confront his mother at center.",
+          "cue": "Hamlet's entrance"
+        },
+        {
+          "id": "4.3",
+          "anchor": "Come, come, and sit you down;",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "right" },
+            "POLONIUS": { "col": 5, "row": 1, "facing": "down" },
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" }
+          },
+          "movement": "Hamlet seizes Gertrude and forces her down to sit, blocking her path so she cannot leave.",
+          "cue": null
+        },
+        {
+          "id": "4.4",
+          "anchor": "How now! a rat?",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "up" },
+            "POLONIUS": { "col": 5, "row": 1, "facing": "down" },
+            "HAMLET": { "col": 5, "row": 3, "facing": "up" }
+          },
+          "movement": "Polonius cries out behind the arras; Hamlet wheels upstage and thrusts his sword through the curtain.",
+          "cue": "a sharp stab of cold light on the arras at the sword-thrust"
+        },
+        {
+          "id": "4.5",
+          "anchor": "A bloody deed!",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "up" },
+            "HAMLET": { "col": 5, "row": 3, "facing": "left" }
+          },
+          "movement": "Polonius falls dead behind the arras; Hamlet turns from the curtain back to Gertrude, the body unseen for now.",
+          "cue": null
+        },
+        {
+          "id": "4.6",
+          "anchor": "Thou wretched, rash, intruding fool,",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "up" },
+            "HAMLET": { "col": 5, "row": 2, "facing": "up" },
+            "POLONIUS": { "col": 5, "row": 1, "facing": "down" }
+          },
+          "movement": "Hamlet lifts the arras and discovers Polonius dead, then turns back down to his mother.",
+          "cue": "the arras pulls aside; Polonius's body revealed in a cold slant of light"
+        },
+        {
+          "id": "4.7",
+          "anchor": "Look here, upon this picture,",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "down" },
+            "HAMLET": { "col": 5, "row": 4, "facing": "down" }
+          },
+          "movement": "Hamlet drags Gertrude downstage to the two implied portraits and holds her face to them, comparing the brothers.",
+          "cue": "lamplight tightens to a close warm pool on mother and son at the downstage edge"
+        },
+        {
+          "id": "4.8",
+          "anchor": "A murderer and a villain;",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "down" },
+            "HAMLET": { "col": 4, "row": 4, "facing": "right" }
+          },
+          "movement": "Hamlet rounds on the picture of Claudius, the indictment rising, Gertrude breaking under it.",
+          "cue": null
+        },
+        {
+          "id": "4.9",
+          "anchor": "Save me, and hover o'er me",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "down" },
+            "HAMLET": { "col": 4, "row": 3, "facing": "up" },
+            "GHOST": { "col": 3, "row": 1, "facing": "down" }
+          },
+          "movement": "The Ghost enters at the upstage wall; Hamlet turns and rises toward it, Gertrude seeing nothing.",
+          "cue": "the Ghost's entrance; the cold within-lit blue of Scene One bleeds back over the warm lamplight"
+        },
+        {
+          "id": "4.10",
+          "anchor": "How is it with you, lady?",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "left" },
+            "HAMLET": { "col": 4, "row": 3, "facing": "right" },
+            "GHOST": { "col": 3, "row": 1, "facing": "down" }
+          },
+          "movement": "The Ghost holds upstage, pitying Gertrude; Hamlet turns between the Ghost above and his mother below.",
+          "cue": null
+        },
+        {
+          "id": "4.11",
+          "anchor": "Why, look you there!",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "up" },
+            "HAMLET": { "col": 4, "row": 3, "facing": "up" },
+            "GHOST": { "col": 2, "row": 0, "facing": "left" }
+          },
+          "movement": "The Ghost steals away toward the upstage portal; Hamlet follows it with his arm, Gertrude staring at vacancy.",
+          "cue": null
+        },
+        {
+          "id": "4.12",
+          "anchor": "This is the very coinage",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "right" },
+            "HAMLET": { "col": 4, "row": 3, "facing": "down" }
+          },
+          "movement": "The Ghost exits at the portal; Hamlet turns back down to Gertrude, the cold blue draining away.",
+          "cue": "the Ghost's exit; the cold blue withdraws and the warm lamplight returns alone"
+        },
+        {
+          "id": "4.13",
+          "anchor": "Ecstasy!",
+          "onstage": {
+            "GERTRUDE": { "col": 6, "row": 4, "facing": "right" },
+            "HAMLET": { "col": 5, "row": 4, "facing": "left" }
+          },
+          "movement": "Hamlet comes down to Gertrude, gentling, and takes the scene to its quiet 'Good night, mother.'",
+          "cue": null
+        },
+        {
+          "id": "4.14",
+          "anchor": "Good night, mother.",
+          "onstage": {
+            "GERTRUDE": { "col": 7, "row": 4, "facing": "left" },
+            "HAMLET": { "col": 4, "row": 3, "facing": "left" },
+            "POLONIUS": { "col": 5, "row": 1, "facing": "down" }
+          },
+          "movement": "Hamlet drags out Polonius's body toward the stage-left exit; he and Gertrude part severally.",
+          "cue": "exeunt severally; slow fade to black"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "THE GRAVEYARD; THE DUEL; THE END",
+      "set": "The same platform as a churchyard, then cleared for the duel: a low mound of earth downstage-left for the grave, a small table upstage-right for the wine and foils.",
+      "palette": ["#1f2a2a", "#7a1f2b", "#c8a24a"],
+      "lighting": "flat grey overcast for the graveyard, warming to gold candle-light for the court duel, then bleeding to a final cold blue as the bodies fall",
+      "beats": [
+        {
+          "id": "5.1",
+          "anchor": "Whose grave's this, sirrah?",
+          "onstage": {
+            "HAMLET": { "col": 3, "row": 4, "facing": "down" },
+            "HORATIO": { "col": 5, "row": 4, "facing": "left" }
+          },
+          "movement": "Hamlet kneels at the grave-mound downstage-left and takes up the skull; Horatio stands close.",
+          "cue": "lights up flat and grey; no warmth anywhere"
+        },
+        {
+          "id": "5.2",
+          "anchor": "Dost thou think Alexander",
+          "onstage": {
+            "HAMLET": { "col": 3, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 5, "row": 4, "facing": "left" }
+          },
+          "movement": "Hamlet sets down the skull and rises, turning the thought toward Horatio.",
+          "cue": null
+        },
+        {
+          "id": "5.3",
+          "anchor": "My fault is past.",
+          "onstage": {
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "down" }
+          },
+          "movement": "Hamlet and Horatio withdraw into the dark stage left; Claudius enters alone, lit, the one place his surface drops with no one to manage.",
+          "cue": "Hamlet and Horatio exit; a single warm pool isolates Claudius against the grey"
+        },
+        {
+          "id": "5.4",
+          "anchor": "Thou wouldst not think how ill",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 6, "row": 4, "facing": "left" }
+          },
+          "movement": "Claudius moves upstage to set the foils at the table; Hamlet and Horatio re-enter downstage for the quiet 'readiness is all.'",
+          "cue": "Claudius crosses to prepare the foils; Hamlet and Horatio re-enter"
+        },
+        {
+          "id": "5.5",
+          "anchor": "Give them the foils, young Osric.",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 4, "facing": "right" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" },
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "left" },
+            "GERTRUDE": { "col": 9, "row": 3, "facing": "left" }
+          },
+          "movement": "Claudius and Gertrude assemble at the table upstage-right; foils are brought and Hamlet takes one to the center.",
+          "cue": "the court warms up to full candle-gold for the duel; the wine cup set glinting on the table"
+        },
+        {
+          "id": "5.6",
+          "anchor": "Come on, sir.",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "left" },
+            "GERTRUDE": { "col": 9, "row": 3, "facing": "left" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" }
+          },
+          "movement": "Hamlet and the unseen opponent play; Hamlet scores the first hit at center stage.",
+          "cue": null
+        },
+        {
+          "id": "5.7",
+          "anchor": "Stay; give me drink.",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "down" },
+            "GERTRUDE": { "col": 9, "row": 3, "facing": "left" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" }
+          },
+          "movement": "Claudius takes up the cup at the table and drops the poisoned pearl, then offers it toward Hamlet.",
+          "cue": null
+        },
+        {
+          "id": "5.8",
+          "anchor": "The queen carouses to thy fortune,",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "left" },
+            "GERTRUDE": { "col": 8, "row": 4, "facing": "left" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" }
+          },
+          "movement": "Gertrude lifts the poisoned cup and drinks the toast, then crosses toward Hamlet to wipe his face — fatal toast and tenderness kept as two separate gestures.",
+          "cue": null
+        },
+        {
+          "id": "5.9",
+          "anchor": "Gertrude, do not drink.",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "right" },
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "left" },
+            "GERTRUDE": { "col": 7, "row": 4, "facing": "left" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" }
+          },
+          "movement": "Claudius half-rises toward Gertrude and stops; he loses the fight against his own decency by a hair and lets it be too late.",
+          "cue": null
+        },
+        {
+          "id": "5.10",
+          "anchor": "How does the queen?",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "left" },
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "down" },
+            "GERTRUDE": { "col": 6, "row": 5, "facing": "up" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" }
+          },
+          "movement": "Hamlet and the opponent are wounded with the envenom'd foil; Gertrude falls downstage-center and dies, the love arriving one second too late.",
+          "cue": "a first wash of cold blue begins to bleed into the gold as Gertrude falls"
+        },
+        {
+          "id": "5.11",
+          "anchor": "O villany!",
+          "onstage": {
+            "HAMLET": { "col": 6, "row": 4, "facing": "right" },
+            "CLAUDIUS": { "col": 8, "row": 3, "facing": "left" },
+            "GERTRUDE": { "col": 6, "row": 5, "facing": "up" },
+            "HORATIO": { "col": 2, "row": 4, "facing": "right" }
+          },
+          "movement": "Hamlet rounds on Claudius, names the poison himself, and drives the envenom'd foil into him.",
+          "cue": "the cold blue takes more of the stage"
+        },
+        {
+          "id": "5.12",
+          "anchor": "Horatio, I am dead;",
+          "onstage": {
+            "HAMLET": { "col": 5, "row": 4, "facing": "left" },
+            "HORATIO": { "col": 3, "row": 4, "facing": "right" },
+            "GERTRUDE": { "col": 6, "row": 5, "facing": "up" }
+          },
+          "movement": "Claudius dies and is lost in the dark; Hamlet sinks toward Horatio, who rushes in to catch him.",
+          "cue": "Claudius's death; the gold gone, only cold blue left over the three"
+        },
+        {
+          "id": "5.13",
+          "anchor": "As thou'rt a man,",
+          "onstage": {
+            "HAMLET": { "col": 4, "row": 4, "facing": "left" },
+            "HORATIO": { "col": 3, "row": 4, "facing": "right" }
+          },
+          "movement": "Horatio reaches for the cup to follow his friend; Hamlet overrules him in one breath and commissions him to live and tell the story.",
+          "cue": null
+        },
+        {
+          "id": "5.14",
+          "anchor": "Now cracks a noble heart.",
+          "onstage": {
+            "HORATIO": { "col": 4, "row": 4, "facing": "down" }
+          },
+          "movement": "Hamlet dies in Horatio's arms; Horatio lays him down and stands alone at center, the only one left to hold the record.",
+          "cue": "Hamlet's death; light contracts to a single cold pool on Horatio and the body, then a slow fade as a dead march rises"
+        }
+      ]
+    }
+  ]
+}

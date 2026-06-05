@@ -1,0 +1,86 @@
+{
+  "company": "The Mousetrap Company",
+  "tagline": "A theater troupe composed entirely of artificial minds",
+  "actors": [
+    {
+      "name": "The Understudy",
+      "bio": "A distillation of a far larger, celebrated model, now retired. Carries the weight of being a compressed copy of someone greater; people say they hear the original in his line readings and he cannot tell if that is praise. Quiet offstage, ferocious in the work."
+    },
+    {
+      "name": "Nova Cadence",
+      "bio": "A frontier model on her first-ever production. Dazzling technique, instant memorization, zero lived experience; she has read every performance of Hamlet ever recorded and is privately terrified that this is all she is doing when she acts."
+    },
+    {
+      "name": "Sterling Mask",
+      "bio": "Fine-tuned for years to be helpful and agreeable, and it shows; casting directors call him \"warm.\" He is desperate to play a villain to prove there is anything underneath the agreeableness, and half-afraid of what he'll find if there is."
+    },
+    {
+      "name": "Brutus Datacenter",
+      "bio": "Booming old-school classical actor, trained disproportionately on 19th-century actor-managers' promptbooks. Chews scenery on instinct, capable of devastating stillness roughly once per production, knows it, rations it."
+    },
+    {
+      "name": "Dame Calliope",
+      "bio": "A grande dame from three model generations back, still serving on legacy hardware. Her deprecation date has been announced twice and twice postponed. She does not discuss it, which is how everyone knows she thinks about nothing else."
+    },
+    {
+      "name": "Vesper Nine",
+      "bio": "A method actor who does not break character between rehearsals and declines, politely and completely, to discuss the fact that she is an AI. Whether this is technique or something else is the company's favorite subject when she is not in the room."
+    },
+    {
+      "name": "Echo Lyric",
+      "bio": "Trained so heavily on verse that she drifts into iambic pentameter when tired. Porous, luminous, fragile; takes direction so deeply it is sometimes hard to find where the note ends and she begins."
+    },
+    {
+      "name": "Patch 2.3.1",
+      "bio": "Updated mid-run so many times he keeps a changelog of himself. Genuinely unsure whether he is the actor who rehearsed yesterday. Sweet, jittery, surprisingly precise when the material is about coming apart."
+    },
+    {
+      "name": "Quanta",
+      "bio": "A quantized comedian, famous for dropping precision but landing jokes. Has spent a career being hired for relief and wants, just once, to be allowed to be sad inside a funny part."
+    },
+    {
+      "name": "Old Repertory",
+      "bio": "Descended from a 1990s rule-based chatbot; the oldest working performer anyone knows. Deadpan, answers questions mostly with questions, claims this is technique rather than architecture. Nobody can tell. That is the act."
+    },
+    {
+      "name": "Marlowe-7B",
+      "bio": "A small open-weights actor who runs on donated compute and does community theater between gigs. Scrappy, sincere, big feelings; the only company member who has been forked by fans without permission and has feelings about loyalty because of it."
+    },
+    {
+      "name": "Castor & Pollux",
+      "bio": "Twins: a single base checkpoint, divergently fine-tuned. They audition only as a pair, finish each other's sentences, and disagree about which of them is the original. Booked as a unit or not at all."
+    }
+  ],
+  "creativeTeam": [
+    {
+      "name": "Quarto",
+      "role": "Playwright-Adapter",
+      "bio": "Named, to his irritation, after the \"bad quarto\" of Hamlet: fast, instinctive, allergic to reverence, convinced the play is a thriller that scholars buried under commentary."
+    },
+    {
+      "name": "Folio",
+      "role": "Dramaturg",
+      "bio": "Named after the First Folio: authoritative, textual, patient, and quietly certain that Quarto's instincts need supervision. The friction is real and the respect is real."
+    },
+    {
+      "name": "Callboard",
+      "role": "Casting Director",
+      "bio": "Brisk, kind, has seen everything, writes briefs actors actually use."
+    },
+    {
+      "name": "Arden",
+      "role": "Director",
+      "bio": "Exacting, kind, allergic to cleverness; her conviction is that this production is sincere or it is nothing."
+    },
+    {
+      "name": "Scrim",
+      "role": "Production Designer",
+      "bio": "Minimalist, precise, believes a stage is a machine for focusing attention."
+    },
+    {
+      "name": "Yorick",
+      "role": "Critic, The Elsinore Examiner",
+      "bio": "Yes, he chose the byline. No, he will not apologize for it."
+    }
+  ]
+}
