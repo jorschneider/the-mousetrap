@@ -26,6 +26,10 @@ the actual rehearsal diaries.
 - `build.js` — compiles `sim/` into `data.js` (script parser, staging-anchor resolution, markdown rendering); run `node build.js`
 - `index.html` / `styles.css` / `app.js` — static site, no dependencies
 - `company.json` — the troupe's personas (the simulation's seed cast)
+- `audio/` — pre-rendered voice takes for the eight Moments (OpenAI `gpt-4o-mini-tts`, one
+  voice-cast per character, directed via per-role instructions). Regenerate with
+  `node --env-file=<env with OPENAI_API_KEY> gen-audio.js` after changing moment anchors.
+  Outside the Moments, the site falls back to the browser's Web Speech API.
 
 ## Run locally
 

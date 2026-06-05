@@ -245,7 +245,11 @@
     on: true,
     byChar: {},
     token: 0,
+    manifest: null, // pre-rendered studio takes for the Moments (audio/manifest.json)
+    audioEl: null,
   };
+  fetch('audio/manifest.json').then(r => r.ok ? r.json() : null)
+    .then(m => { speech.manifest = m; }).catch(() => {});
   // pitch/pace direction per role (the casting, audible)
   const VOICE_STYLE = {
     HAMLET:       { pitch: 1.0,  rate: 1.04 }, // the Understudy: velocity and doubt
@@ -285,7 +289,9 @@
     speechSynthesis.speak(u);
   }
   function hushVoices() {
-    if (speech.supported) { speech.token++; speechSynthesis.cancel(); }
+    speech.token++;
+    if (speech.supported) speechSynthesis.cancel();
+    if (speech.audioEl) { speech.audioEl.onended = null; speech.audioEl.pause(); speech.audioEl = null; }
   }
 
   /* ---------------------------------------------------------- playback */
@@ -393,8 +399,31 @@
     hushVoices();
     if (!playing) return;
     const step = timeline[pos];
+    // pre-rendered studio take for this step of the active moment?
+    const clip = (speech.on && activeMoment !== null && speech.manifest && step.kind === 'page')
+      ? speech.manifest[`${activeMoment + 1}:${pos - MOMENTS[activeMoment].start}`] : null;
     const useVoice = speech.on && speech.supported && step.kind === 'page';
-    if (useVoice) {
+    if (clip) {
+      const tok = speech.token;
+      let advanced = false;
+      const onDone = () => {
+        if (tok !== speech.token || advanced) return;
+        advanced = true;
+        clearTimeout(timer);
+        setTimeout(advance, 200 / speed);
+      };
+      const a = new Audio('audio/' + clip);
+      speech.audioEl = a;
+      a.playbackRate = Math.min(2, Math.max(0.6, 0.82 + speed * 0.18));
+      a.onended = onDone;
+      a.onerror = onDone;
+      a.play().catch(() => {
+        // autoplay blocked (deep link without a gesture) — fall back to read-along timing
+        if (tok !== speech.token) return;
+        timer = setTimeout(advance, stepDuration(step) / speed);
+      });
+      timer = setTimeout(() => { a.pause(); onDone(); }, (stepDuration(step) / speed) * 3 + 8000);
+    } else if (useVoice) {
       const tok = speech.token;
       let advanced = false;
       const onDone = () => {
