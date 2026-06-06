@@ -132,7 +132,15 @@ CAST.ALL = { ...CAST.ROSENCRANTZ, acting: 'Courtiers crying out in alarm, urgent
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function hume(body) {
   for (let attempt = 0; ; attempt++) {
-    const res = await fetch(API, { method: 'POST', headers: HDRS, body: JSON.stringify(body) });
+    let res;
+    try {
+      res = await fetch(API, { method: 'POST', headers: HDRS, body: JSON.stringify(body) });
+    } catch (e) { // transient network failure (ECONNRESET etc.)
+      if (attempt >= 8) throw e;
+      process.stdout.write(` [network error, retrying]`);
+      await sleep(8000);
+      continue;
+    }
     if (res.ok) return res.json();
     const detail = (await res.text()).slice(0, 300);
     if (res.status === 429 && attempt < 8) {
@@ -165,8 +173,10 @@ async function ensureVoices() {
     const c = Object.values(CAST).find(c => c.name === name);
     process.stdout.write(`  voice ${name}: designing...`);
     const gen = await hume({
+      // voice DESIGN requires the description parameter, which only Octave 1 accepts;
+      // the minted voices are compatible with Octave 2 at render time
       utterances: [{ text: c.sample, description: c.design }],
-      format: { type: 'mp3' }, num_generations: 1,
+      format: { type: 'mp3' }, num_generations: 1, version: '1',
     });
     const genId = gen.generations[0].generation_id;
     const save = await fetch(`${API}/voices`, {
@@ -183,15 +193,15 @@ async function ensureVoices() {
 }
 
 async function tts(text, cast, mode, file) {
-  let acting = cast.acting;
-  if (mode) acting += ` Delivery note: spoken ${/aside/i.test(mode) ? 'as a hushed aside, almost to himself' : `(${mode})`}.`;
+  // Octave 2 rejects the description parameter — delivery comes from the
+  // designed voice + the text itself. (cast.acting is kept above as the
+  // casting record and for any future model that takes direction again.)
   const d = await hume({
     utterances: [{
       text,
       voice: { name: cast.name, provider: 'CUSTOM_VOICE' },
-      description: acting,
     }],
-    format: { type: 'mp3' }, num_generations: 1,
+    format: { type: 'mp3' }, num_generations: 1, version: '2',
   });
   fs.writeFileSync(file, Buffer.from(d.generations[0].audio, 'base64'));
 }

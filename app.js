@@ -237,60 +237,23 @@
   }
 
   /* ---------------------------------------------------------- voices
-     Web Speech API: one distinct voice per character, cast to the actor.
-     R&G share a voice — Patch 2.3.1 plays both. Playback advances when
-     the line finishes speaking. */
+     Pre-rendered Hume Octave takes for the Moments (audio/manifest.json):
+     one custom-designed voice per character, directed per line. R&G share
+     a voice — Patch 2.3.1 plays both. Playback advances when the take ends.
+     Outside the Moments the surtitles run silent on read-along timing. */
   const speech = {
-    supported: 'speechSynthesis' in window,
     on: true,
-    byChar: {},
     token: 0,
-    manifest: null, // pre-rendered studio takes for the Moments (audio/manifest.json)
+    manifest: null,
+    manifestReady: null,
     audioEl: null,
   };
-  fetch('audio/manifest.json').then(r => r.ok ? r.json() : null)
-    .then(m => { speech.manifest = m; }).catch(() => {});
-  // pitch/pace direction per role (the casting, audible)
-  const VOICE_STYLE = {
-    HAMLET:       { pitch: 1.0,  rate: 1.04 }, // the Understudy: velocity and doubt
-    CLAUDIUS:     { pitch: 0.8,  rate: 0.97 }, // Sterling Mask: warm, smooth
-    GERTRUDE:     { pitch: 1.12, rate: 0.95 },
-    OPHELIA:      { pitch: 1.3,  rate: 1.0  },
-    POLONIUS:     { pitch: 0.75, rate: 0.88 }, // Old Repertory: flat, deliberate
-    HORATIO:      { pitch: 0.95, rate: 0.9  }, // Nova Cadence: the stillness
-    GHOST:        { pitch: 0.55, rate: 0.78 }, // Dame Calliope: racing the sunrise, quietly
-    ROSENCRANTZ:  { pitch: 1.18, rate: 1.08 }, // Patch 2.3.1 —
-    GUILDENSTERN: { pitch: 1.18, rate: 1.08 }, // — same voice, both names, no seam
-    ALL:          { pitch: 1.0,  rate: 1.05 },
-  };
-  function assignVoices() {
-    if (!speech.supported) return;
-    const all = speechSynthesis.getVoices().filter(v => v.lang && v.lang.startsWith('en'));
-    if (!all.length) return;
-    // prefer GB court, deterministic order; spread distinct voices across the cast
-    const pool = all.sort((a, b) =>
-      (b.lang.startsWith('en-GB') - a.lang.startsWith('en-GB')) || a.name.localeCompare(b.name));
-    const order = ['HAMLET', 'CLAUDIUS', 'GERTRUDE', 'OPHELIA', 'POLONIUS', 'HORATIO', 'GHOST', 'ROSENCRANTZ', 'ALL'];
-    order.forEach((c, i) => { speech.byChar[c] = pool[i % pool.length]; });
-    speech.byChar.GUILDENSTERN = speech.byChar.ROSENCRANTZ; // one actor, one voice
-  }
-  if (speech.supported) {
-    assignVoices();
-    speechSynthesis.onvoiceschanged = assignVoices;
-  }
-  function speakStep(step, done) {
-    const u = new SpeechSynthesisUtterance(step.text.replace(/\n/g, ' '));
-    const style = VOICE_STYLE[step.char] || { pitch: 1, rate: 1 };
-    if (speech.byChar[step.char]) u.voice = speech.byChar[step.char];
-    u.pitch = style.pitch;
-    u.rate = Math.min(1.7, Math.max(0.5, style.rate * (0.85 + speed * 0.2)));
-    u.onend = done;
-    u.onerror = done;
-    speechSynthesis.speak(u);
-  }
+  speech.manifestReady = fetch('audio/manifest.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(m => { speech.manifest = m; return m; })
+    .catch(() => null);
   function hushVoices() {
     speech.token++;
-    if (speech.supported) speechSynthesis.cancel();
     if (speech.audioEl) { speech.audioEl.onended = null; speech.audioEl.pause(); speech.audioEl = null; }
   }
 
@@ -399,10 +362,18 @@
     hushVoices();
     if (!playing) return;
     const step = timeline[pos];
-    // pre-rendered studio take for this step of the active moment?
-    const clip = (speech.on && activeMoment !== null && speech.manifest && step.kind === 'page')
+    const wantsClip = speech.on && activeMoment !== null && step.kind === 'page';
+    // manifest still in flight (someone pressed a moment in the first second) — wait for it
+    if (wantsClip && !speech.manifest && speech.manifestReady) {
+      const tok = speech.token;
+      speech.manifestReady.then(() => {
+        speech.manifestReady = null;
+        if (tok === speech.token && playing) schedule();
+      });
+      return;
+    }
+    const clip = (wantsClip && speech.manifest)
       ? speech.manifest[`${activeMoment + 1}:${pos - MOMENTS[activeMoment].start}`] : null;
-    const useVoice = speech.on && speech.supported && step.kind === 'page';
     if (clip) {
       const tok = speech.token;
       let advanced = false;
@@ -423,19 +394,6 @@
         timer = setTimeout(advance, stepDuration(step) / speed);
       });
       timer = setTimeout(() => { a.pause(); onDone(); }, (stepDuration(step) / speed) * 3 + 8000);
-    } else if (useVoice) {
-      const tok = speech.token;
-      let advanced = false;
-      const onDone = () => {
-        if (tok !== speech.token || advanced) return;
-        advanced = true;
-        clearTimeout(timer);
-        setTimeout(advance, 220 / speed); // a breath between speeches
-      };
-      speakStep(step, onDone);
-      // watchdog: some browsers drop the end event
-      timer = setTimeout(() => { speechSynthesis.cancel(); onDone(); },
-        (stepDuration(step) / speed) * 3 + 4000);
     } else {
       timer = setTimeout(advance, stepDuration(step) / speed);
     }
@@ -508,9 +466,7 @@
   $('btnPrev').addEventListener('click', () => jump(pos - 1));
   $('speed').addEventListener('change', e => { speed = Number(e.target.value); if (playing) schedule(); });
   const voiceBtn = $('btnVoice');
-  if (!speech.supported) { speech.on = false; voiceBtn.disabled = true; voiceBtn.textContent = 'voices: n/a'; }
   function toggleVoices() {
-    if (!speech.supported) return;
     speech.on = !speech.on;
     voiceBtn.textContent = 'voices: ' + (speech.on ? 'on' : 'off');
     if (playing) schedule();
